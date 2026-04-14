@@ -26,24 +26,24 @@ An educational demonstration project showing how AI-powered drug recommendation 
 1. **Clone or download the project files**
 
 2. **Install dependencies:**
-   \`\`\`bash
+   ```bash
    pip install -r requirements.txt
-   \`\`\`
+   ```
 
 3. **Set up environment variables:**
-   \`\`\`bash
+   ```bash
    cp .env.template .env
-   \`\`\`
+   ```
    
    Edit `.env` and add your Groq API key:
-   \`\`\`
+   ```
    GROQ_API_KEY=your_actual_groq_api_key_here
-   \`\`\`
+   ```
 
 4. **Run the application:**
-   \`\`\`bash
+   ```bash
    streamlit run scripts/app.py
-   \`\`\`
+   ```
 
 5. **Open your browser** to the URL shown in the terminal (usually `http://localhost:8501`)
 
@@ -52,20 +52,20 @@ An educational demonstration project showing how AI-powered drug recommendation 
 If you prefer to run the application in Docker:
 
 1. **Build the Docker image:**
-   \`\`\`bash
+   ```bash
    docker build -t drug-recommendation .
-   \`\`\`
+   ```
 
 2. **Set up environment file:**
    Create a `.env` file in the project root:
-   \`\`\`
+   ```
    GROQ_API_KEY=your_actual_groq_api_key_here
-   \`\`\`
+   ```
 
 3. **Run the container:**
-   \`\`\`bash
+   ```bash
    docker run -p 8501:8501 --env-file .env drug-recommendation
-   \`\`\`
+   ```
 
 4. **Access the application** at `http://localhost:8501`
 
