@@ -18,7 +18,8 @@ An educational demonstration project showing how AI-powered drug recommendation 
 
 ### Prerequisites
 - Python 3.8 or higher
-- OpenAI API key (or other LLM API key)
+- Groq API key (get one at https://console.groq.com)
+- Docker (optional, for containerized setup)
 
 ### Installation
 
@@ -34,17 +35,41 @@ An educational demonstration project showing how AI-powered drug recommendation 
    cp .env.template .env
    \`\`\`
    
-   Edit `.env` and add your API key:
+   Edit `.env` and add your Groq API key:
    \`\`\`
-   OPENAI_API_KEY=your_actual_api_key_here
+   GROQ_API_KEY=your_actual_groq_api_key_here
    \`\`\`
 
 4. **Run the application:**
    \`\`\`bash
-   streamlit run app.py
+   streamlit run scripts/app.py
    \`\`\`
 
 5. **Open your browser** to the URL shown in the terminal (usually `http://localhost:8501`)
+
+### Docker Setup (Alternative)
+
+If you prefer to run the application in Docker:
+
+1. **Build the Docker image:**
+   \`\`\`bash
+   docker build -t drug-recommendation .
+   \`\`\`
+
+2. **Set up environment file:**
+   Create a `.env` file in the project root:
+   \`\`\`
+   GROQ_API_KEY=your_actual_groq_api_key_here
+   \`\`\`
+
+3. **Run the container:**
+   \`\`\`bash
+   docker run -p 8501:8501 --env-file .env drug-recommendation
+   \`\`\`
+
+4. **Access the application** at `http://localhost:8501`
+
+**Note:** The Docker container exposes port 8501 and automatically loads environment variables from the `.env` file.
 
 ## How It Works
 
@@ -79,19 +104,29 @@ This project demonstrates:
 ## File Structure
 
 \`\`\`
-drug_recommendation/
-├── app.py              # Main Streamlit application
+Drug-recommendation-system/
+├── dockerfile          # Docker container configuration
+├── package.json        # Project metadata
 ├── requirements.txt    # Python dependencies
-├── .env.template      # Environment variables template
-├── .env              # Your actual environment variables (create this)
-└── README.md         # This file
+├── README.md          # This file
+├── scripts/
+│   └── app.py         # Main Streamlit application
+└── .env               # Your environment variables (create this)
 \`\`\`
 
 ## Troubleshooting
 
-- **API Errors:** Check your API key in the `.env` file
+### Local Setup
+- **API Errors:** Check your Groq API key in the `.env` file
 - **Module Not Found:** Ensure all requirements are installed with `pip install -r requirements.txt`
-- **Port Issues:** Streamlit will automatically find an available port, or specify one with `streamlit run app.py --server.port 8502`
+- **Port Issues:** Streamlit will automatically find an available port, or specify one with `streamlit run scripts/app.py --server.port 8502`
+- **Python Version:** Ensure you have Python 3.8 or higher installed
+
+### Docker Setup
+- **Build Issues:** Clear Docker cache with `docker system prune` and rebuild
+- **Port Already in Use:** Change the port mapping with `docker run -p 8502:8501 drug-recommendation`
+- **API Errors in Container:** Verify `.env` file exists and contains valid Groq API key before running container
+- **Permission Denied:** On Linux/Mac, prefix docker commands with `sudo`
 
 ## Learning Extensions
 
