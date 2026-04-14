@@ -103,7 +103,7 @@ This project demonstrates:
 
 ## File Structure
 
-\`\`\`
+```
 Drug-recommendation-system/
 ├── dockerfile          # Docker container configuration
 ├── package.json        # Project metadata
@@ -112,7 +112,7 @@ Drug-recommendation-system/
 ├── scripts/
 │   └── app.py         # Main Streamlit application
 └── .env               # Your environment variables (create this)
-\`\`\`
+```
 
 ## Troubleshooting
 
